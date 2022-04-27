@@ -5,7 +5,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
+import Select from '@mui/material/Select';
+import Slider from '@mui/material/Slider';
+import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
+import Typography from '@mui/material/Typography';
 import FormLabel from '@mui/material/FormLabel';
 import FormGroup from '@mui/material/FormGroup';
 import FormControl from '@mui/material/FormControl';
@@ -96,12 +100,35 @@ export default function FinalForm(props) {
               <Field name="category" validate={required}>
                 {({ input, meta, placeholder }) => (
                   <div>
-                    <FormControl sx={{ p: 2 }}>
+                    <FormControl sx={{ p: 2, minWidth: 150 }}>
                       <InputLabel htmlFor="my-input">Category</InputLabel>
-                      <Input
+                      <Select
                         {...input}
-                        id="email"
+                        id="category"
                         aria-describedby="my-helper-text"
+                      >
+                        <MenuItem value={1}>Cat 1</MenuItem>
+                        <MenuItem value={2}>Cat 2</MenuItem>
+                        <MenuItem value={3}>Cat 3</MenuItem>
+                      </Select>
+                      <FormHelperText id="my-helper-text"></FormHelperText>
+                    </FormControl>
+                  </div>
+                )}
+              </Field>
+              <Field name="rating" validate={required}>
+                {({ input, meta, placeholder }) => (
+                  <div>
+                    <FormControl sx={{ p: 2, minWidth: 150 }}>
+                      <Typography id="input-slider" gutterBottom>
+                        Rating
+                      </Typography>
+                      <Slider
+                        {...input}
+                        id="rating"
+                        defaultValue={50}
+                        aria-describedby="my-helper-text"
+                        step={5}
                       />
                       <FormHelperText id="my-helper-text"></FormHelperText>
                     </FormControl>
