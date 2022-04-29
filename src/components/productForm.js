@@ -17,6 +17,20 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { AppBar } from '@mui/material';
 
+const wines = [
+  {
+    inventory_name: 'Beaulieu Vineyards GDL Cabernet',
+    id: 1,
+    is_btg: false,
+    vintage: 2017,
+    story: 'kjfaslkdjfsdpasdjksdjewjksdf asdfsfsad f fasddew sdaasd'
+  },
+  { inventory_name: "Cambria Julia's Vineyard Pinot Noir", id: 2 },
+  { inventory_name: '"Desiderio" Avignonesi', id: 3 },
+  { inventory_name: 'Erath Pinot Gris', id: 4 },
+  { inventory_name: 'Foris Fly Over Red', id: 5 }
+];
+
 const options = [
   { label: 'Beaulieu Vineyards GDL Cabernet', id: 1 },
   { label: "Cambria Julia's Vineyard Pinot Noir", id: 2 },
