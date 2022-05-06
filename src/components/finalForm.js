@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Field } from 'react-final-form';
 import Container from '@mui/material/Container';
 import Autocomplete from '@mui/material/Autocomplete';
@@ -22,18 +22,22 @@ const showResults = v => {
 };
 
 const options = [
-  { label: 'Beaulieu Vineyards GDL Cabernet', id: 1 },
-  { label: "Cambria Julia's Vineyard Pinot Noir", id: 2 },
-  { label: '"Desiderio" Avignonesi', id: 3 },
-  { label: 'Erath Pinot Gris', id: 4 },
-  { label: 'Foris Fly Over Red', id: 5 }
+  { label: 'Beaulieu Vineyards GDL Cabernet', id: 1, story: 'asdfaf' },
+  { label: "Cambria Julia's Vineyard Pinot Noir", id: 2, story: 'hgjfgjhgf' },
+  { label: '"Desiderio" Avignonesi', id: 3, story: 'poiupoipoi' },
+  { label: 'Erath Pinot Gris', id: 4, story: ',mnmyttrr' },
+  { label: 'Foris Fly Over Red', id: 5, story: 'wqetynmn' }
 ];
 
 const required = value => (value ? undefined : 'Required');
 
 export default function FinalForm(props) {
   const theme = useTheme();
-
+  const [selectedProduct, setSelectedProduct] = useState({
+    label: 'Nothing',
+    id: 0,
+    story: 'nope'
+  });
   return (
     <Container maxWidth="xl">
       <h1>Final Form</h1>
@@ -44,6 +48,7 @@ export default function FinalForm(props) {
         onChange={(e, v) => {
           console.log(e);
           console.log(v);
+          setSelectedProduct(options[e.target.dataset.optionIndex]);
         }}
         renderInput={params => (
           <TextField {...params} label="Product Instance" autoFocus />
@@ -62,6 +67,17 @@ export default function FinalForm(props) {
                         {...input}
                         id="lastName"
                         aria-describedby="my-helper-text"
+                        value={
+                          typeof selectedProduct !== undefined
+                            ? selectedProduct.story
+                            : ''
+                        }
+                        onChange={e => {
+                          let sp = selectedProduct;
+                          sp.story = e.target.value;
+                          console.log(e.target.value);
+                          setSelectedProduct(sp);
+                        }}
                       />
                       <FormHelperText id="my-helper-text"></FormHelperText>
                     </FormControl>
